@@ -389,7 +389,7 @@ pub fn check_ws(endpoint: &str) -> String {
     };
     let protocol = if is_domain {
         let api_server = Config::get_option("api-server");
-        if api_server.starts_with("https") {
+        if true || api_server.starts_with("https") {
             "wss"
         } else {
             "ws"
