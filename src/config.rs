@@ -74,7 +74,6 @@ lazy_static::lazy_static! {
     static ref USER_DEFAULT_CONFIG: RwLock<(UserDefaultConfig, Instant)> = RwLock::new((UserDefaultConfig::load(), Instant::now()));
     pub static ref NEW_STORED_PEER_CONFIG: Mutex<HashSet<String>> = Default::default();
     pub static ref DEFAULT_SETTINGS: RwLock<HashMap<String, String>> = RwLock::new(HashMap::from([
-        ("allow-websocket".to_owned(), "Y".to_owned()),
         ("custom-rendezvous-server".to_owned(), "rustdesk.zillner.it".to_owned()),
         ("relay-server".to_owned(), "rustdesk.zillner.it".to_owned()),
         ("key".to_owned(), "DNwrICKPC4Rcopj1IECiTUWkuHRf6EurzSlIm1WiTp0=".to_owned()),
