@@ -2846,9 +2846,14 @@ pub fn option2bool(option: &str, value: &str) -> bool {
     }
 }
 
+// Set at runtime when classic UDP registration gets no answer, so the
+// client falls back to WebSocket (WSS/443) until the service restarts.
+pub static WS_FALLBACK: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+
 pub fn use_ws() -> bool {
     let option = keys::OPTION_ALLOW_WEBSOCKET;
     option2bool(option, &Config::get_option(option))
+        || WS_FALLBACK.load(std::sync::atomic::Ordering::SeqCst)
 }
 
 pub fn allow_insecure_tls_fallback() -> bool {
